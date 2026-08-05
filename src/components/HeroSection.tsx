@@ -5,7 +5,7 @@ import type { ImageKey } from '../imageConfig';
 
 const RONALDO_PHOTOS: { src: string; scale?: number }[] = [
   { src: '/ronaldo/ronaldo_fenomeno03.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno06.webp' },
+  { src: '/ronaldo/ronaldo_fenomeno06.webp', scale: 1.18 },
   { src: '/ronaldo/ronaldo_fenomeno02.webp', scale: 0.82 },
   { src: '/ronaldo/ronaldo_fenomeno10.webp', scale: 0.82 },
   { src: '/ronaldo/ronaldo_fenomeno04.webp' },
