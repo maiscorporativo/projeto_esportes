@@ -6,7 +6,7 @@ import type { ImageKey } from '../imageConfig';
 const RONALDO_PHOTOS: { src: string; scale?: number }[] = [
   { src: '/ronaldo/ronaldo_fenomeno03.webp' },
   { src: '/ronaldo/ronaldo_fenomeno06.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno02.webp' },
+  { src: '/ronaldo/ronaldo_fenomeno02.webp', scale: 0.82 },
   { src: '/ronaldo/ronaldo_fenomeno10.webp', scale: 0.82 },
   { src: '/ronaldo/ronaldo_fenomeno04.webp' },
   { src: '/ronaldo/ronaldo_fenomeno12.webp' },
@@ -14,7 +14,6 @@ const RONALDO_PHOTOS: { src: string; scale?: number }[] = [
   { src: '/ronaldo/ronaldo_trofeu.webp' },
   { src: '/ronaldo/ronaldo_fenomeno05.webp' },
   { src: '/ronaldo/ronaldo_fenomeno11.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno01.webp' },
 ];
 
 function RonaldoShowcase({ tilt }: { tilt: { x: number; y: number } }) {
