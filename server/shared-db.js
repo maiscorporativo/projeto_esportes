@@ -24,9 +24,16 @@ dotenv.config();
 
 const enabled = !!process.env.SHARED_DB_NAME;
 
+// Ver comentário equivalente em server/db.js: normaliza "localhost" para
+// '127.0.0.1' porque o Node 18+ pode resolver "localhost" como ::1 (IPv6),
+// e o usuário do MySQL na hospedagem compartilhada só está liberado para
+// conectar via 127.0.0.1.
+const rawSharedHost = process.env.SHARED_DB_HOST || 'localhost';
+const sharedDbHost = rawSharedHost === 'localhost' ? '127.0.0.1' : rawSharedHost;
+
 export const sharedPool = enabled
   ? mysql.createPool({
-      host: process.env.SHARED_DB_HOST || 'localhost',
+      host: sharedDbHost,
       port: Number(process.env.SHARED_DB_PORT || 3306),
       user: process.env.SHARED_DB_USER,
       password: process.env.SHARED_DB_PASSWORD,
