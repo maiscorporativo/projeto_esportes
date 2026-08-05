@@ -78,4 +78,8 @@ export interface TrendingPackage {
   /* ── Soft-delete ── */
   deletedAt?: string;
   deletedBy?: string;
+  /* ── Campos virtuais da integração com o banco compartilhado (shared_packages) ── */
+  sharedId?: number;
+  origem?: 'gp' | 'emais' | 'torcida' | 'esportes';
+  portalHidden?: boolean;
 }

@@ -104,7 +104,11 @@ async function fetchContent(): Promise<ContentStore> {
   };
 }
 
-async function putContent(data: ContentStore & { heroImages?: Record<string, string> }) {
+interface SaveResult {
+  newlyAssignedSharedIds?: { createdAt: string; sharedId: number }[];
+}
+
+async function putContent(data: ContentStore & { heroImages?: Record<string, string> }): Promise<SaveResult> {
   const res = await fetch('/api/content', {
     method: 'PUT',
     headers: {
@@ -117,6 +121,7 @@ async function putContent(data: ContentStore & { heroImages?: Record<string, str
     const errData = await res.json().catch(() => ({}));
     throw new Error(errData.details || errData.error || 'Save failed');
   }
+  return res.json().catch(() => ({}));
 }
 
 const UPDATE_EVENT = 'emais_content_update';
@@ -228,7 +233,23 @@ export function useContentConfig() {
       try {
         const heroRaw = localStorage.getItem('emais_image_config');
         const heroImages = heroRaw ? JSON.parse(heroRaw) : {};
-        await putContent({ ...merged, heroImages });
+        const result = await putContent({ ...merged, heroImages });
+        // Pacote novo/duplicado ainda não tinha sharedId (banco compartilhado
+        // acabou de atribuir um) — sem aplicar de volta, o próximo autosave
+        // não saberia que já existe uma linha, e criaria outra a cada save.
+        if (result.newlyAssignedSharedIds?.length) {
+          setContent(prev => {
+            const updated = {
+              ...prev,
+              packages: prev.packages.map(pkg => {
+                const match = result.newlyAssignedSharedIds!.find(a => a.createdAt && a.createdAt === pkg.createdAt);
+                return match ? { ...pkg, sharedId: match.sharedId } : pkg;
+              }),
+            };
+            saveCache(updated);
+            return updated;
+          });
+        }
         hasLocalUnsaved.current = false;
         setSaveError(null);
         bc?.postMessage('update');
