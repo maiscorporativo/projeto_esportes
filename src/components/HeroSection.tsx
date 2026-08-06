@@ -137,9 +137,11 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* ══ CAMADA 1 — Galeria inclinada (imagens gerenciáveis pelo Admin) ══ */}
+      {/* ══ CAMADA 1 — Galeria inclinada (imagens gerenciáveis pelo Admin) ══
+           No mobile vira marca d'água de fundo (opacidade baixa, cobrindo toda a seção,
+           atrás do bloco de texto); no desktop mantém a composição original à direita. ══ */}
       <div
-        className="hidden lg:block absolute -right-[10%] -top-[12%] w-[62%] h-[130%] pointer-events-none transition-transform duration-1000 ease-out"
+        className="absolute inset-0 opacity-20 lg:opacity-100 lg:inset-auto lg:-right-[10%] lg:-top-[12%] lg:w-[62%] lg:h-[130%] pointer-events-none transition-transform duration-1000 ease-out"
         style={{ transform: `rotate(7deg) translate(${tilt.x * 8}px, ${tilt.y * 6}px)` }}
         aria-hidden="true"
       >
