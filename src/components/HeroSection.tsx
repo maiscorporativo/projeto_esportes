@@ -143,7 +143,7 @@ export default function HeroSection() {
            o parágrafo/botões + a montagem do Ronaldo, pra não brigar com ela); no desktop
            mantém a composição original à direita, sem esse degradê extra. ══ */}
       <div
-        className="absolute inset-0 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.75)_30%,rgba(0,0,0,0.28)_60%,rgba(0,0,0,0.04)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.75)_30%,rgba(0,0,0,0.28)_60%,rgba(0,0,0,0.04)_100%)] lg:[mask-image:none] lg:[-webkit-mask-image:none] lg:inset-auto lg:-right-[10%] lg:-top-[12%] lg:w-[62%] lg:h-[130%] pointer-events-none transition-transform duration-1000 ease-out"
+        className="absolute inset-0 [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.75)_30%,rgba(0,0,0,0.14)_42%,rgba(0,0,0,0.03)_60%,rgba(0,0,0,0.02)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.75)_30%,rgba(0,0,0,0.14)_42%,rgba(0,0,0,0.03)_60%,rgba(0,0,0,0.02)_100%)] lg:[mask-image:none] lg:[-webkit-mask-image:none] lg:inset-auto lg:-right-[10%] lg:-top-[12%] lg:w-[62%] lg:h-[130%] pointer-events-none transition-transform duration-1000 ease-out"
         style={{ transform: `rotate(7deg) translate(${tilt.x * 8}px, ${tilt.y * 6}px)` }}
         aria-hidden="true"
       >
