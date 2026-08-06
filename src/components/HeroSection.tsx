@@ -4,8 +4,8 @@ import { useImageConfig } from '../hooks/useImageConfig';
 import type { ImageKey } from '../imageConfig';
 
 const RONALDO_PHOTOS: { src: string; scale?: number; offsetX?: string }[] = [
-  { src: '/ronaldo/ronaldo_fenomeno04.webp' },
-  { src: '/ronaldo/ronaldo_trofeu.webp', scale: 0.86, offsetX: '-16%' },
+  { src: '/ronaldo/ronaldo_fenomeno04.webp', offsetX: '-20%' },
+  { src: '/ronaldo/ronaldo_trofeu.webp', scale: 0.86, offsetX: '-42%' },
 ];
 
 function RonaldoShowcase({ tilt }: { tilt: { x: number; y: number } }) {
@@ -161,8 +161,8 @@ export default function HeroSection() {
         Ronaldo
       </div>
 
-      {/* ══ CAMADA 3 — Ronaldo (composição com profundidade) ══ */}
-      <div className="hidden lg:block absolute bottom-0 -right-[2%] xl:right-[2%] h-[86%] aspect-square pointer-events-none z-10" aria-hidden="true">
+      {/* ══ CAMADA 3 — Ronaldo (composição com profundidade, ao fundo, atrás do texto) ══ */}
+      <div className="hidden lg:block absolute bottom-0 -left-[8%] xl:-left-[4%] h-[86%] aspect-square pointer-events-none z-10" aria-hidden="true">
         {/* Anel + glow atrás do Ronaldo */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] aspect-square rounded-full border border-gold/15" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[64%] aspect-square rounded-full blur-[90px] animate-glow-pulse" style={{ background: 'radial-gradient(circle, rgba(254,208,0,0.5) 0%, rgba(201,164,0,0.25) 50%, transparent 75%)' }} />
