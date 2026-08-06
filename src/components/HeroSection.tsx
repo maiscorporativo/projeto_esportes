@@ -5,7 +5,7 @@ import type { ImageKey } from '../imageConfig';
 
 const RONALDO_PHOTOS: { src: string; scale?: number; offsetX?: string }[] = [
   { src: '/ronaldo/ronaldo_fenomeno04.webp', offsetX: '-20%' },
-  { src: '/ronaldo/ronaldo_trofeu.webp', scale: 0.86, offsetX: '2%' },
+  { src: '/ronaldo/ronaldo_trofeu.webp', scale: 0.86, offsetX: '24%' },
 ];
 
 function RonaldoShowcase({ tilt }: { tilt: { x: number; y: number } }) {
