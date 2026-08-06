@@ -86,6 +86,31 @@ function MarqueeCol({ items, direction, offset, getImage }: {
   );
 }
 
+const ALL_COLS: ColItem[] = [...COL1, ...COL2, ...COL3];
+
+function MobileGalleryStrip({ getImage }: { getImage: (k: ImageKey) => string }) {
+  const items = ALL_COLS.map(item => ({ item, src: getImage(item.key) })).filter(x => x.src);
+  if (items.length === 0) return null;
+  const loop = [...items, ...items];
+
+  return (
+    <div className="lg:hidden relative -mx-4 sm:-mx-6 mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <div className="flex gap-3 w-max animate-marquee">
+        {loop.map(({ item, src }, i) => (
+          <img
+            key={`${item.key}-${i}`}
+            src={src}
+            alt={item.alt}
+            className="h-24 w-36 object-cover rounded-xl shadow-lg shadow-black/50 flex-shrink-0"
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const DELIVERABLES = [
   { icon: '🎥', label: 'Vídeos personalizados' },
   { icon: '👕', label: 'Camisas autografadas' },
@@ -174,6 +199,27 @@ export default function HeroSection() {
 
       {/* ══ CONTEÚDO ══ */}
       <div className="relative z-20 flex-1 flex flex-col justify-center max-w-[1400px] w-full mx-auto px-4 sm:px-6 pt-[150px] pb-16">
+        {/* ══ Hero visual mobile — imagem do Ronaldo em destaque (camadas 1/3 ficam ocultas abaixo de lg) ══ */}
+        <Reveal className="lg:hidden -mx-4 sm:-mx-6 mb-8 relative h-[320px] sm:h-[380px] overflow-hidden rounded-b-[28px]">
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] aspect-square rounded-full blur-[70px] opacity-70"
+            style={{ background: 'radial-gradient(circle, rgba(254,208,0,0.45) 0%, rgba(201,164,0,0.2) 55%, transparent 75%)' }}
+            aria-hidden="true"
+          />
+          <img
+            src="/ronaldo/ronaldo_trofeu.webp"
+            alt="Ronaldo Fenômeno"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto max-w-none object-contain object-bottom animate-ronaldo-kenburns drop-shadow-[0_30px_40px_rgba(0,0,0,0.5)]"
+            decoding="async"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#141a8f] via-[#141a8f]/10 to-transparent" aria-hidden="true" />
+          <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gold bg-black/30 backdrop-blur-sm rounded-full px-3 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" aria-hidden="true" />
+            Ronaldo Fenômeno
+          </span>
+        </Reveal>
+
         <Reveal className="max-w-2xl">
           <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-gold border border-gold/30 bg-gold/5 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" aria-hidden="true" />
@@ -219,6 +265,9 @@ export default function HeroSection() {
             ))}
           </div>
         </Reveal>
+
+        {/* Tira de galeria — miniaturas rolando horizontalmente, versão mobile da galeria inclinada */}
+        <MobileGalleryStrip getImage={getImage} />
       </div>
 
       {/* Indicador de scroll */}
