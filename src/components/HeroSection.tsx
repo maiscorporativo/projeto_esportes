@@ -177,7 +177,7 @@ export default function HeroSection() {
       </div>
 
       {/* ══ CAMADA 3 — Ronaldo (composição com profundidade) ══ */}
-      <div className="hidden lg:block absolute bottom-0 right-[4%] xl:right-[8%] h-[86%] aspect-square pointer-events-none z-10" aria-hidden="true">
+      <div className="hidden lg:block absolute bottom-0 -right-[2%] xl:right-[2%] h-[86%] aspect-square pointer-events-none z-10" aria-hidden="true">
         {/* Anel + glow atrás do Ronaldo */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] aspect-square rounded-full border border-gold/15" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[64%] aspect-square rounded-full blur-[90px] animate-glow-pulse" style={{ background: 'radial-gradient(circle, rgba(254,208,0,0.5) 0%, rgba(201,164,0,0.25) 50%, transparent 75%)' }} />
