@@ -1,49 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Reveal from './Reveal';
 import { useImageConfig } from '../hooks/useImageConfig';
 import type { ImageKey } from '../imageConfig';
 
-const RONALDO_PHOTOS: { src: string; scale?: number }[] = [
-  { src: '/ronaldo/ronaldo_fenomeno03.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno06.webp', scale: 1.18 },
-  { src: '/ronaldo/ronaldo_fenomeno02.webp', scale: 0.82 },
-  { src: '/ronaldo/ronaldo_fenomeno10.webp', scale: 0.82 },
+const RONALDO_PHOTOS: { src: string; scale?: number; offsetX?: string }[] = [
   { src: '/ronaldo/ronaldo_fenomeno04.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno12.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno07.webp' },
-  { src: '/ronaldo/ronaldo_trofeu.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno05.webp' },
-  { src: '/ronaldo/ronaldo_fenomeno11.webp' },
+  { src: '/ronaldo/ronaldo_trofeu.webp', scale: 0.86, offsetX: '-16%' },
 ];
 
 function RonaldoShowcase({ tilt }: { tilt: { x: number; y: number } }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex(i => (i + 1) % RONALDO_PHOTOS.length), 4500);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <div
       className="absolute inset-0 transition-transform duration-700 ease-out"
       style={{ transform: `translate(${tilt.x * 14}px, ${tilt.y * 10}px)` }}
     >
-      {RONALDO_PHOTOS.map(({ src, scale = 1 }, i) => (
+      {RONALDO_PHOTOS.map(({ src, scale = 1, offsetX = '0%' }) => (
         <img
           key={src}
           src={src}
           alt=""
-          className="absolute bottom-0 left-1/2 h-full w-auto max-w-none object-contain object-bottom animate-ronaldo-kenburns transition-opacity duration-[900ms] ease-in-out drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)]"
+          className="absolute bottom-0 left-1/2 h-full w-auto max-w-none object-contain object-bottom"
           style={{
-            opacity: i === index ? 1 : 0,
-            transform: `translateX(-50%) scale(${scale})`,
+            opacity: 0.16,
+            transform: `translateX(calc(-50% + ${offsetX})) scale(${scale})`,
             transformOrigin: 'bottom center',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 78%, transparent 100%)',
-            maskImage: 'linear-gradient(to bottom, black 78%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
           }}
           decoding="async"
-          loading={i === 0 ? 'eager' : 'lazy'}
+          loading="eager"
         />
       ))}
     </div>
@@ -181,7 +166,7 @@ export default function HeroSection() {
         {/* Anel + glow atrás do Ronaldo */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] aspect-square rounded-full border border-gold/15" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[64%] aspect-square rounded-full blur-[90px] animate-glow-pulse" style={{ background: 'radial-gradient(circle, rgba(254,208,0,0.5) 0%, rgba(201,164,0,0.25) 50%, transparent 75%)' }} />
-        {/* Ronaldo Fenômeno — sequência de fotos em crossfade */}
+        {/* Ronaldo Fenômeno — fotos fixas, discretas, em segundo plano (estilo marca d'água) */}
         <RonaldoShowcase tilt={tilt} />
       </div>
 
@@ -194,8 +179,8 @@ export default function HeroSection() {
           </span>
 
           <h1 className="text-[2.6rem] sm:text-[3.6rem] xl:text-[4.6rem] font-black uppercase leading-[1.02] mb-7 tracking-tight">
-            Viaje ao lado<br />
-            de uma <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED000] via-[#c9a400] to-[#FED000] bg-[length:200%_auto] animate-shine">Lenda</span>
+            Sua Convocação<br />
+            Está <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED000] via-[#c9a400] to-[#FED000] bg-[length:200%_auto] animate-shine">Aberta</span>
           </h1>
 
           <p className="text-neutral-300/80 font-medium text-lg sm:text-xl mb-10 max-w-xl leading-relaxed">
