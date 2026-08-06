@@ -23,4 +23,5 @@ const pool = mysql.createPool({
   connectTimeout: 60000,
 });
 
+export { dbHost };
 export default pool;

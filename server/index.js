@@ -7,7 +7,7 @@ import contentRouter from './routes/content.js';
 import uploadRouter from './routes/upload.js';
 import authRouter from './routes/auth.js';
 import contactRouter from './routes/contact.js';
-import pool from './db.js';
+import pool, { dbHost } from './db.js';
 
 dotenv.config();
 
@@ -113,6 +113,6 @@ app.listen(PORT, async () => {
   await autoMigrate();
   console.log(`\n🚀 E-Mais API rodando em http://localhost:${PORT}`);
   console.log(`   Ambiente: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`   Banco:    ${process.env.DB_NAME || 'emais_cms'} @ ${process.env.DB_HOST || 'localhost'}\n`);
+  console.log(`   Banco:    ${process.env.DB_NAME || 'emais_cms'} @ ${dbHost}\n`);
 });
 
