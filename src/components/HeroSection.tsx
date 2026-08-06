@@ -186,7 +186,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-neutral-300/80 font-medium text-lg sm:text-xl mb-10 max-w-xl leading-relaxed">
-            Conectamos a sua empresa aos maiores ídolos do futebol em experiências exclusivas — dos bastidores ao centro do gramado.
+            Conectamos a sua empresa aos maiores ídolos do mundo esportivo em experiências exclusivas — dos bastidores ao centro das grandes arenas e circuitos.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-14">
