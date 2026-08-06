@@ -1,7 +1,7 @@
 const FOOTBALL_LOGOS: { src: string; alt: string; h: string }[] = [
   { src: '/partners/champions_logo.png',    alt: 'Champions League', h: 'h-8 md:h-22' },
   { src: '/partners/libertadores_logo.png', alt: 'Libertadores',     h: 'h-8 md:h-22' },
-  { src: '/partners/premier_logo.png',      alt: 'Premier League',   h: 'h-8 md:h-16' },
+  { src: '/partners/premier_logo_v2.png',   alt: 'Premier League',   h: 'h-8 md:h-16' },
   { src: '/partners/laliga_logo.svg',       alt: 'La Liga',          h: 'h-8 md:h-16' },
   { src: '/partners/bundesliga_logo.png',   alt: 'Bundesliga',       h: 'h-8 md:h-16' },
   { src: '/partners/elclasico_logo.png',    alt: 'El Clasico',       h: 'h-8 md:h-20' },
