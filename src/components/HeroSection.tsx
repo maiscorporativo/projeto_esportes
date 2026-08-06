@@ -187,26 +187,33 @@ export default function HeroSection() {
             Está <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED000] via-[#c9a400] to-[#FED000] bg-[length:200%_auto] animate-shine">Aberta</span>
           </h1>
 
-          <p className="text-neutral-300/80 font-medium text-lg sm:text-xl mb-10 max-w-xl leading-relaxed">
-            Conectamos a sua empresa aos maiores ídolos do mundo esportivo em experiências exclusivas — dos bastidores ao centro das grandes arenas e circuitos.
-          </p>
+          {/* Mobile: montagem do Ronaldo (mesma marca d'água discreta do desktop) atrás do parágrafo + botões */}
+          <div className="relative">
+            <div className="lg:hidden absolute -inset-x-6 -top-4 -bottom-4 pointer-events-none overflow-hidden" aria-hidden="true">
+              <RonaldoShowcase tilt={tilt} />
+            </div>
 
-          <div className="flex flex-wrap items-center gap-4 mb-14">
-            <a
-              href="/"
-              onClick={(e) => { e.preventDefault(); document.getElementById('trending')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="inline-flex items-center gap-3 bg-gold text-black font-bold text-sm px-8 py-4 rounded-full hover:bg-white transition-all duration-300 shadow-lg shadow-gold/25 group"
-            >
-              Explorar Experiências
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a
-              href="/"
-              onClick={(e) => { e.preventDefault(); document.getElementById('contato-form')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="inline-flex items-center gap-2 text-sm font-bold text-white border border-white/25 backdrop-blur-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold transition-all duration-300"
-            >
-              Seja um Parceiro
-            </a>
+            <p className="relative text-neutral-300/80 font-medium text-lg sm:text-xl mb-10 max-w-xl leading-relaxed">
+              Conectamos a sua empresa aos maiores ídolos do mundo esportivo em experiências exclusivas — dos bastidores ao centro das grandes arenas e circuitos.
+            </p>
+
+            <div className="relative flex flex-wrap items-center gap-4 mb-14">
+              <a
+                href="/"
+                onClick={(e) => { e.preventDefault(); document.getElementById('trending')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center gap-3 bg-gold text-black font-bold text-sm px-8 py-4 rounded-full hover:bg-white transition-all duration-300 shadow-lg shadow-gold/25 group"
+              >
+                Explorar Experiências
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a
+                href="/"
+                onClick={(e) => { e.preventDefault(); document.getElementById('contato-form')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center gap-2 text-sm font-bold text-white border border-white/25 backdrop-blur-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold transition-all duration-300"
+              >
+                Seja um Parceiro
+              </a>
+            </div>
           </div>
         </Reveal>
 
